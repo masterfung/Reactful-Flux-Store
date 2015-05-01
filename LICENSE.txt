@@ -1,4 +1,8 @@
-                            The MIT License
+Fleact Market uses the React Starter Kit. 
+
+
+
+                          The MIT License
 
 Copyright (c) 2014 Konstantin Tarkus (@koistya), KriaSoft LLC.
 

@@ -73,6 +73,7 @@ class App {
               <span>© Your Company</span>
               <span><a href="/">Home</a></span>
               <span><a href="/privacy">Privacy</a></span>
+              <span><a href="/about">About</a></span>
               <span>{'Viewport: ' + this.props.viewport.width + 'x' + this.props.viewport.height}</span>
             </p>
           </div>
