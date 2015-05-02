@@ -3,11 +3,11 @@
 
 # TEAM
 
-    <name> -- <role> -- <twitter>
+    Tsung Hung @masterfung
 
 # THANKS
 
-    <name>
+    The React Starter Kit Team and Contributors
 
 # TECHNOLOGY COLOPHON
 
