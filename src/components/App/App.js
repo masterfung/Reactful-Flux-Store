@@ -42,7 +42,7 @@ class App {
   }
 
   render() {
-    var page = AppStore.getPage(this.props.path);
+    let page = AppStore.getPage(this.props.path);
     invariant(page !== undefined, 'Failed to load page content.');
     this.props.onSetTitle(page.title);
 
@@ -93,7 +93,7 @@ class App {
     }
 
     // Ensure link
-    var el = event.target;
+    let el = event.target;
     while (el && el.nodeName !== 'A') {
       el = el.parentNode;
     }
@@ -109,7 +109,7 @@ class App {
     }
 
     // Ensure non-hash for the same path
-    var link = el.getAttribute('href');
+    let link = el.getAttribute('href');
     if (el.pathname === location.pathname && (el.hash || link === '#')) {
       return;
     }
@@ -125,14 +125,14 @@ class App {
     }
 
     // X-origin
-    var origin = window.location.protocol + '//' + window.location.hostname +
+    let origin = window.location.protocol + '//' + window.location.hostname +
       (window.location.port ? ':' + window.location.port : '');
     if (!(el.href && el.href.indexOf(origin) === 0)) {
       return;
     }
 
     // Rebuild path
-    var path = el.pathname + el.search + (el.hash || '');
+    let path = el.pathname + el.search + (el.hash || '');
 
     event.preventDefault();
     AppActions.loadPage(path, () => {
