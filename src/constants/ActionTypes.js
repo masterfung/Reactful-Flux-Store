@@ -13,6 +13,11 @@ export default keyMirror({
   LOAD_PAGE: null,
   LOAD_PAGE_SUCCESS: null,
   LOAD_PAGE_ERROR: null,
-  CHANGE_LOCATION: null
-
+  CHANGE_LOCATION: null,
+  CART_ADD: null,
+  CART_REMOVE: null,
+  CART_VISIBLE: null,
+  SET_SELECTED: null, //Selects a product option
+  RECEIVE_DATA: null, //Loads mock data
+  SELECT_PRODUCT: null
 });
