@@ -75,7 +75,9 @@ class App {
               <span><a href="/">Home</a></span>
               <span><a href="/privacy">Privacy</a></span>
               <span><a href="/about">About</a></span>
-              <span>{'Viewport: ' + this.props.viewport.width + 'x' + this.props.viewport.height}</span>
+              <span><a href="/shop">Shop</a></span>
+              <span>
+                {'Viewport: ' + this.props.viewport.width + 'x' + this.props.viewport.height}</span>
             </p>
           </div>
         </div>

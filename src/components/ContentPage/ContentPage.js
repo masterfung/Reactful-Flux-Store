@@ -16,7 +16,7 @@ class ContentPage {
   };
 
   render() {
-    var { className, body, other } = this.props;
+    let { className, body, other } = this.props;
 
     return (
       <div className={'ContentPage ' + className}
