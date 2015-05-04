@@ -1,6 +1,6 @@
 export default {
 	// Load Mock Product Data Into localStorage
-	init: function() {
+	init: () => {
 		localStorage.clear();
 		localStorage.setItem('product', JSON.stringify([
 			{
