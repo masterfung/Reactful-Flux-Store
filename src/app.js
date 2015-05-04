@@ -16,6 +16,14 @@ import Dispatcher from './core/Dispatcher';
 import AppActions from './actions/AppActions';
 import ActionTypes from './constants/ActionTypes';
 
+import ProductData from './ProductData';
+import CartAPI from './utils/CartAPI';
+import FluxCart from './components/FluxCart/FluxCart';
+
+ProductData.init();
+
+CartAPI.getProductData();
+
 let path = decodeURI(window.location.pathname);
 let setMetaTag = (name, content) => {
   // Remove and create a new <meta /> tag in order to make it work
