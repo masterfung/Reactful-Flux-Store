@@ -10,19 +10,35 @@ import Dispatcher from '../core/Dispatcher';
 import ActionTypes from '../constants/ActionTypes';
 import PayloadSources from '../constants/PayloadSources';
 import EventEmitter from 'eventemitter3';
-import assign from 'react/lib/Object.assign';
 
-var CHANGE_EVENT = 'change';
+let CHANGE_EVENT = 'change';
 
-var pages = {};
-var loading = false;
+let pages = {};
+let _products = {},
+    _cartVisible = false;
+let loading = false;
 
 if (__SERVER__) {
   pages['/'] = {title: 'Home Page'};
   pages['/privacy'] = {title: 'Privacy Policy'};
+  pages['/about'] = {title: 'About'};
+  pages['/shop'] = {title: 'Shop'};
 }
 
-var AppStore = assign({}, EventEmitter.prototype, {
+let addItem = function addItem(sku, update) {
+  update.quantity = sku in _products ? _products[sku].quantity + 1 : 1;
+  _products[sku] = _.extend({}, _products[sku], update)
+};
+
+let setVisibilityOfCart = function setVisibilityOfCart(cartVisible) {
+  _cartVisible = cartVisible;
+};
+
+let removeItemFromCart = function removeItemFromCart(sku) {
+  delete _products[sku]
+};
+
+let AppStore = _.extend({}, EventEmitter.prototype, {
 
   isLoading() {
     return loading;
@@ -66,12 +82,43 @@ var AppStore = assign({}, EventEmitter.prototype, {
    */
   off(callback) {
     this.off(CHANGE_EVENT, callback);
+  },
+
+  getCartItems() {
+    return _products;
+  },
+
+  getCartCount() {
+    return Object.keys(_products).length;
+  },
+
+  getCartTotal() {
+    let total = 0;
+    for (product in _products) {
+      if (_products.hasOwnProperty(product)) {
+        total += _products[product].price * _products[product].quantity;
+      }
+      return total.toFixed(2);
+    }
+  },
+
+  getCartVisible() {
+    return _cartVisible;
+  },
+
+  addChangeListener(callback) {
+    this.on(CHANGE_EVENT, callback);
+  },
+
+  removeChangeListener(callback) {
+    this.removeListener(CHANGE_EVENT, callback);
   }
 
 });
 
 AppStore.dispatcherToken = Dispatcher.register((payload) => {
-  var action = payload.action;
+  let action = payload.action;
+  let text;
 
   switch (action.actionType) {
 
@@ -87,10 +134,26 @@ AppStore.dispatcherToken = Dispatcher.register((payload) => {
       AppStore.emitChange();
       break;
 
+    case ActionTypes.CART_ADD:
+      addItem(action.sku, action.update);
+      break;
+
+    case ActionTypes.CART_VISIBLE:
+      setVisibilityOfCart(action.cartVisible);
+      break;
+
+    case ActionTypes.CART_REMOVE:
+          removeItemFromCart(action.sku);
+          break;
+
     default:
-      // Do nothing
+      return true;
 
   }
+
+  CartStore.emitChange();
+
+  return true;
 
 });
 
