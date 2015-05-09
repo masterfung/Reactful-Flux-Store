@@ -14,8 +14,8 @@ class NotFoundPage {
   render() {
     return (
       <div>
-        <h1>Page Not Found</h1>
-        <p>Oops! Sorry but the page you were trying to view does not exist.</p>
+        <h1 className="text-center">Page Not Found</h1>
+        <p  className="text-center">Oops! Sorry but the page you were trying to view does not exist. Please click the back button to return to the previous result or check your URL.</p>
       </div>
     );
   }
