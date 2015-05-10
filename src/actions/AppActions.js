@@ -47,6 +47,42 @@ export default {
           cb();
         }
       });
+  },
+  receiveProduct: (data) => {
+    Dispatcher.handleAction({
+      actionType: ActionTypes.RECEIVE_DATA,
+      data
+    })
+  },
+  selectProduct: (index) => {
+    Dispatcher.handleAction({
+      actionType: ActionTypes.SELECT_PRODUCT,
+      data: index
+    })
+  },
+  // Add item to cart
+  addToCart: (sku, update) => {
+    Dispatcher.handleAction({
+      actionType: ActionTypes.CART_ADD,
+      sku,
+      update
+    })
+  },
+
+  // Remove item from cart
+  removeFromCart: (sku) => {
+    Dispatcher.handleAction({
+      actionType: ActionTypes.CART_REMOVE,
+      sku
+    })
+  },
+
+  // Update cart visibility status
+  updateCartVisible: (cartVisible) => {
+    Dispatcher.handleAction({
+      actionType: ActionTypes.CART_VISIBLE,
+      cartVisible
+    })
   }
 
 };
