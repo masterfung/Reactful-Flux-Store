@@ -11,7 +11,7 @@ import ActionTypes from '../constants/ActionTypes';
 import PayloadSources from '../constants/PayloadSources';
 import EventEmitter from 'eventemitter3';
 
-let CHANGE_EVENT = 'change';
+const CHANGE_EVENT = 'change';
 
 let pages = {};
 let _products = {},
@@ -151,9 +151,9 @@ AppStore.dispatcherToken = Dispatcher.register((payload) => {
 
   }
 
-  CartStore.emitChange();
-
-  return true;
+  //CartStore.emitChange();
+  //
+  //return true;
 
 });
 
