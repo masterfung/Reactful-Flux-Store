@@ -21,7 +21,7 @@ let Dispatcher = assign(new Flux.Dispatcher(), {
    * type and additional data coming from the server.
    */
   handleServerAction(action) {
-    var payload = {
+    let payload = {
       source: PayloadSources.SERVER_ACTION,
       action: action
     };
@@ -33,11 +33,18 @@ let Dispatcher = assign(new Flux.Dispatcher(), {
    * type and additional data coming from the view.
    */
   handleViewAction(action) {
-    var payload = {
+    let payload = {
       source: PayloadSources.VIEW_ACTION,
       action: action
     };
     this.dispatch(payload);
+  },
+
+  handleAction(action) {
+    let payload = {
+      source: PayloadSources.VIEW_ACTION,
+      action: action
+    }
   }
 
 });
