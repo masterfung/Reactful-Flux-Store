@@ -6,7 +6,7 @@ export default {
 			{
 				id: '777900',
 				name: 'Signature Fleact Gem - Master Cut Series',
-				description: 'The finest gem speciment you will find in all of the Fleact Realm. Guaranteed to hold its value and luster. Master cut and perfect. Value quality rating of 9.9997!',
+				description: 'The finest gem specimen you will find in all of the Fleact Realm. Guaranteed to hold its value and luster. Master cut and perfect. Value quality rating of 9.9997!',
 				variants: [
 					{
 						sku: '901',
